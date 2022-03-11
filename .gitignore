@@ -1,0 +1,7 @@
+venv.sh
+__pycache__
+.env
+
+.local_profile
+.deta
+.deta_private_info
