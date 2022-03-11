@@ -1,0 +1,5 @@
+fastapi>=0.74.0,<0.75.0
+pydantic>=1.9.0,<1.10.0
+httpx
+beautifulsoup4
+uvicorn
