@@ -76,7 +76,7 @@ async def webhook(update_data: dict, response: Response):
     elif verdict == 'start':
         welcome_string = '''
 Just send me link from your music app!
-For example: https://open.spotify.com/track/25nU5mxSzlzyOXzeqx4c5j?si=653307baf34f4ce5
+For example: https://open.spotify.com/track/25nU5mxSzlzyOXzeqx4c5j
         '''
         sendMessage(welcome_string, update_data["message"]["chat"]["id"])
         return
