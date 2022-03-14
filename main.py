@@ -50,10 +50,10 @@ def validate_url(text: str) -> str:
     return ''
 
 
-def sendMessage(text: str, id: int) -> None:
+def sendMessage(text: str, id: int, disable_web_page_preview: bool = False) -> None:
     with httpx.Client() as client:
         client.get(TELEGRAM_URL + "sendMessage", params={
-            "chat_id": id, "text": text})
+            "chat_id": id, "text": text, "disable_web_page_preview": disable_web_page_preview})
 
 
 @app.get("/song/{url:path}")
@@ -78,7 +78,8 @@ async def webhook(update_data: dict, response: Response):
 Just send me link from your music app!
 For example: https://open.spotify.com/track/25nU5mxSzlzyOXzeqx4c5j
         '''
-        sendMessage(welcome_string, update_data["message"]["chat"]["id"])
+        sendMessage(
+            welcome_string, update_data["message"]["chat"]["id"], disable_web_page_preview=True)
         return
     else:
         sendMessage(verdict, update_data["message"]["chat"]["id"])
